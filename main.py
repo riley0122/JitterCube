@@ -1,8 +1,11 @@
+from re import X
+from tabnanny import verbose
 import pygame
 import os
 img_path = os.path.join('./player.png')
 from cube import cub
 import random
+import math
 #open a window with a 720x480 resolution and keep the screen open
 pygame.init()
 screen = pygame.display.set_mode((720,480))
@@ -26,9 +29,21 @@ class fud(pygame.sprite.Sprite):
         self.y = coords[1]-5
 
 food = fud((random.randrange(10,710), random.randrange(10,470)))
-
+fx=random.randrange(10,470)
+fy=random.randrange(10,470)
+screen.blit(food.image, (fx,fy))
 running = True
+score=0
 while running:
+    #draw text in the lower left corner saying "Score: {score}"
+    scoretext = "Score: {score}".format(score=score)
+    #if the food is touching the cube, make it go to a new location
+    if math.sqrt((fx-cube.px)**2 + (fy-cube.py)**2)<=10:
+        fx=random.randrange(10,470)
+        fy=random.randrange(10,470)
+        screen.blit(food.image, (fx,fy))
+        print(score)
+        score+=1
     #check for events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -36,8 +51,18 @@ while running:
     
     cube.handle_keys()
     cube.draw(screen)
-    if cube.timehasntmoved>3000:
-        cube.timehasntmoved=3000
-
+    if cube.timehasntmoved>3000 or cube.py>480 or cube.py<0 or cube.px>720 or cube.px<0:
+        #get the number in highscore.csv
+        with open('highscore.csv', 'r') as f:
+            highscore = int(f.read())
+            print('score'+str(score))
+            print('highscore'+str(highscore))
+        #if the score is greater than the highscore, write the score to highscore.csv
+        if score>highscore:
+            with open('highscore.csv', 'w') as f:
+                f.write(str(score))
+        running=False
+        
+    
     pygame.display.update()
 
