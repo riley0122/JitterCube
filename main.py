@@ -37,9 +37,11 @@ fy=random.randrange(10,470)
 screen.blit(food.image, (fx,fy))
 running = True
 score=0
-while running:
-    #draw text in the lower left corner saying "Score: {score}"
-    scoretext = "Score: {score}".format(score=score)
+#draw text in the bottom left corner
+font = pygame.font.Font(None, 36)
+text = font.render("Score: "+str(score), 1, (255,255,255))
+screen.blit(text, (10, 450))
+while running:    
     #if the food is touching the cube, make it go to a new location
     if math.sqrt((fx-cube.px)**2 + (fy-cube.py)**2)<=10:
         fx=random.randrange(10,470)
@@ -47,10 +49,19 @@ while running:
         screen.blit(food.image, (fx,fy))
         print(score)
         score+=1
+        #draw a cube in the colour of the background over the text
+        screen.fill((67, 225, 240), (10, 450, 100, 50))
+
+        text = font.render("Score: "+str(score), 1, (255,255,255))
+        screen.blit(text, (10, 450))
     #check for events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+            #close the window
+            pygame.quit()
+            #exit the program
+            quit()
     
     cube.handle_keys()
     cube.draw(screen)
@@ -66,6 +77,10 @@ while running:
                 f.write(str(score))
         running=False
         os.system('cmd /c "startded.bat"')
+        #close the window
+        pygame.quit()
+        #exit the program
+        quit()
         
     
     pygame.display.update()

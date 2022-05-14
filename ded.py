@@ -4,6 +4,8 @@ import os
 def start_game():
     print("Starting game...")
     os.system('cmd /c "startGame.bat"')
+    #close the window
+    root.destroy()
 
 def exit():
     print("Exiting...")
@@ -14,7 +16,7 @@ def ttr():
     os.system('cmd /c "notepad.exe how-to-play.txt"')
 
 root = Tk()
-root.title("Start JitterCube")
+root.title("You are have ded")
 root.resizable(False, False)
 #set the icon to ./logo.ico
 root.iconbitmap('./logo.ico')

@@ -4,6 +4,8 @@ import os
 def start_game():
     print("Starting game...")
     os.system('cmd /c "startGame.bat"')
+    #close the window
+    root.destroy()
 
 def exit():
     print("Exiting...")
