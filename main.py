@@ -2,7 +2,7 @@ from re import X
 from tabnanny import verbose
 import pygame
 import os
-img_path = os.path.join('./player.png')
+img_path = os.path.join('./food.png')
 from cube import cub
 import random
 import math
