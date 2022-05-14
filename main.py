@@ -65,6 +65,7 @@ while running:
             with open('highscore.csv', 'w') as f:
                 f.write(str(score))
         running=False
+        os.system('cmd /c "startded.bat"')
         
     
     pygame.display.update()
