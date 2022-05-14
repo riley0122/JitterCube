@@ -41,6 +41,9 @@ score=0
 font = pygame.font.Font(None, 36)
 text = font.render("Score: "+str(score), 1, (255,255,255))
 screen.blit(text, (10, 450))
+pygame.mixer.music.load("./song.wav")
+pygame.mixer.music.play(-1)
+#main loop
 while running:    
     #if the food is touching the cube, make it go to a new location
     if math.sqrt((fx-cube.px)**2 + (fy-cube.py)**2)<=10:
@@ -54,6 +57,7 @@ while running:
 
         text = font.render("Score: "+str(score), 1, (255,255,255))
         screen.blit(text, (10, 450))
+        pygame.mixer.Sound.play(pygame.mixer.Sound("./pickUp.wav"))
     #check for events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -66,6 +70,8 @@ while running:
     cube.handle_keys()
     cube.draw(screen)
     if cube.timehasntmoved>3000:
+        pygame.mixer.music.fadeout(300)
+        pygame.mixer.Sound.play(pygame.mixer.Sound("./death.wav"))
         #get the number in highscore.csv
         with open('highscore.csv', 'r') as f:
             highscore = int(f.read())
