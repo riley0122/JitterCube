@@ -16,7 +16,32 @@ def ttr():
 root = Tk()
 root.title("Start JitterCube")
 root.resizable(False, False)
+#set the icon to ./logo.ico
+root.iconbitmap('./logo.ico')
 root.geometry("300x300")
+#set the background colour to #ffffff
+root.configure(background="#ffffff")
+#load the image logo.png
+logo = PhotoImage(file='./logo.png')
+#display the logo
+logo_label = Label(root, image=logo)
+logo_label.pack()
+text = Text(root, height=1, width=10)
+text.pack()
+text.config(state="normal")
+text.insert(END,"JitterCube")
+text.configure(state='disabled')
+
+#load highscore
+with open('highscore.csv', 'r') as f:
+    highscore = int(f.read())
+    highscoreString = str(highscore)
+    hstext = Text(root, height=1, width=15)
+    hstext.pack()
+    hstext.config(state="normal")
+    hstext.insert(END,"Highscore: "+highscoreString)
+    hstext.configure(state='disabled')
+
 start = ttk.Button(
    root, 
    text="Start Game", 

@@ -3,6 +3,7 @@ from tabnanny import verbose
 import pygame
 import os
 img_path = os.path.join('./food.png')
+logo_path= os.path.join('./logo.png')
 from cube import cub
 import random
 import math
@@ -10,6 +11,8 @@ import math
 pygame.init()
 screen = pygame.display.set_mode((720,480))
 pygame.display.set_caption("JitterCube")
+#set the icon to the logo
+pygame.display.set_icon(pygame.image.load(logo_path))
 #make the on the left side of the screen 67, 225, 240
 screen.fill((67, 225, 240))
 #make the on the right side of the screen the inverted color of the left side
