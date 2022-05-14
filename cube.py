@@ -21,7 +21,7 @@ class cub(pygame.sprite.Sprite):
         key = pygame.key.get_pressed()
         if key[pygame.K_UP]:
             self.tmr=True
-            if been.__contains__([self.x, self.y-5]):
+            if been.__contains__([self.x, self.y-5]) or self.y<0:
                 pass
             else:
                 self.timehasntmoved=0
@@ -30,7 +30,7 @@ class cub(pygame.sprite.Sprite):
                 been.append([self.x, self.y])
         if key[pygame.K_DOWN]:
             self.tmr=True
-            if been.__contains__([self.x, self.y+5]):
+            if been.__contains__([self.x, self.y+5]) or self.y>720:
                 pass
             else:
                 self.timehasntmoved=0
@@ -39,7 +39,7 @@ class cub(pygame.sprite.Sprite):
                 been.append([self.x, self.y])
         if key[pygame.K_LEFT]:
             self.tmr=True
-            if been.__contains__([self.x-5, self.y]):
+            if been.__contains__([self.x-5, self.y]) or self.x<0:
                 pass
             else:
                 self.timehasntmoved=0
@@ -48,7 +48,7 @@ class cub(pygame.sprite.Sprite):
                 been.append([self.x, self.y])
         if key[pygame.K_RIGHT]:
             self.tmr=True
-            if been.__contains__([self.x+5, self.y]):
+            if been.__contains__([self.x+5, self.y]) or self.x>720:
                 pass
             else:    
                 self.timehasntmoved=0

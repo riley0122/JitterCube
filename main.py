@@ -54,7 +54,7 @@ while running:
     
     cube.handle_keys()
     cube.draw(screen)
-    if cube.timehasntmoved>3000 or cube.py>480 or cube.py<0 or cube.px>720 or cube.px<0:
+    if cube.timehasntmoved>3000:
         #get the number in highscore.csv
         with open('highscore.csv', 'r') as f:
             highscore = int(f.read())
