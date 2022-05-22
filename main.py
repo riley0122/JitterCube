@@ -2,6 +2,7 @@ from re import X
 from tabnanny import verbose
 import pygame
 import os
+import json
 img_path = os.path.join('./food.png')
 logo_path= os.path.join('./logo.png')
 from cube import cub
@@ -43,6 +44,11 @@ text = font.render("Score: "+str(score), 1, (255,255,255))
 screen.blit(text, (10, 450))
 pygame.mixer.music.load("./song.wav")
 pygame.mixer.music.play(-1)
+filepath = os.path.dirname(os.path.abspath(__file__))
+with open(filepath+'/optionsMenu/options.json', 'r') as f:
+    options = json.loads(f.read())
+    volume = options['volume']
+pygame.mixer.music.set_volume(volume)
 #main loop
 while running:    
     #if the food is touching the cube, make it go to a new location

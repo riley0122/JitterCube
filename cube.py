@@ -1,7 +1,12 @@
+from lib2to3.pgen2.grammar import opmap
 import pygame
 import os
+import json
 been=[]
-speed=.5
+filepath = os.path.dirname(os.path.realpath(__file__))
+with open(filepath+'/optionsMenu/options.json', 'r') as f:
+    options = json.loads(f.read())
+    speed = options['speed']/4
 img_path = os.path.join('./player.png')
 class cub(pygame.sprite.Sprite):
     def __init__(self, colour, scaling, coords):
