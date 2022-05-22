@@ -1,6 +1,9 @@
 Movement:
 Use the arrow keys to move, you can't move to a place you've already been.
+Don't stand still else you'll die.
+
 Goal:
 Your goal is to find as many apples as possible.
+
 How do you win:
 You don't; it's an infinite game.
