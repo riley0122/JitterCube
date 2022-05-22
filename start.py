@@ -44,12 +44,29 @@ with open('highscore.csv', 'r') as f:
     hstext.insert(END,"Highscore: "+highscoreString)
     hstext.configure(state='disabled')
 
+def options():
+    #open the file options.txt in notepad
+    os.system('cmd /c "options.bat"')
+    #close the window
+    root.destroy()
+
 start = ttk.Button(
    root, 
    text="Start Game", 
    command=start_game
 )
 start.pack(
+    ipadx=5,
+    ipady=5,
+    expand=True
+)
+
+options = ttk.Button(
+    root,
+    text="Options",
+    command=options
+)
+options.pack(
     ipadx=5,
     ipady=5,
     expand=True
