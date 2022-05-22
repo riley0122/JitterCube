@@ -49,13 +49,38 @@ with open(filepath+'/optionsMenu/options.json', 'r') as f:
     options = json.loads(f.read())
     volume = options['volume']
 pygame.mixer.music.set_volume(volume)
+
+def foodCheckBeen(fx,fy):
+    if cube.been.__contains__([fx, fy]) or cube.been.__contains__([fx-1, fy]) or cube.been.__contains__([fx+1, fy]) or cube.been.__contains__([fx, fy-1]) or cube.been.__contains__([fx, fy+1]):
+        fx=random.randrange(10,470)
+        fy=random.randrange(10,470)
+        foodCheckBeen(fx,fy)
+    elif cube.been.__contains__([fx, fy]) or cube.been.__contains__([fx-2, fy]) or cube.been.__contains__([fx+2, fy]) or cube.been.__contains__([fx, fy-2]) or cube.been.__contains__([fx, fy+2]):
+        fx=random.randrange(10,470)
+        fy=random.randrange(10,470)
+        foodCheckBeen(fx,fy)
+    elif cube.been.__contains__([fx, fy]) or cube.been.__contains__([fx-3, fy]) or cube.been.__contains__([fx+3, fy]) or cube.been.__contains__([fx, fy-3]) or cube.been.__contains__([fx, fy+3]):
+        fx=random.randrange(10,470)
+        fy=random.randrange(10,470)
+        foodCheckBeen(fx,fy)
+    elif cube.been.__contains__([fx, fy]) or cube.been.__contains__([fx-4, fy]) or cube.been.__contains__([fx+4, fy]) or cube.been.__contains__([fx, fy-4]) or cube.been.__contains__([fx, fy+4]):
+        fx=random.randrange(10,470)
+        fy=random.randrange(10,470)
+        foodCheckBeen(fx,fy)
+    elif cube.been.__contains__([fx, fy]) or cube.been.__contains__([fx-5, fy]) or cube.been.__contains__([fx+5, fy]) or cube.been.__contains__([fx, fy-5]) or cube.been.__contains__([fx, fy+5]):
+        fx=random.randrange(10,470)
+        fy=random.randrange(10,470)
+        foodCheckBeen(fx,fy)
+    else:
+        return (fx,fy)
+
 #main loop
 while running:    
     #if the food is touching the cube, make it go to a new location
     if math.sqrt((fx-cube.px)**2 + (fy-cube.py)**2)<=10:
         fx=random.randrange(10,470)
         fy=random.randrange(10,470)
-        screen.blit(food.image, (fx,fy))
+        screen.blit(food.image, foodCheckBeen(fx,fy))
         print(score)
         score+=1
         #draw a cube in the colour of the background over the text

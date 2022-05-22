@@ -23,6 +23,7 @@ class cub(pygame.sprite.Sprite):
         self.tmr=False
     
     def handle_keys(self):
+        self.been = been
         key = pygame.key.get_pressed()
         if key[pygame.K_UP]:
             self.tmr=True
